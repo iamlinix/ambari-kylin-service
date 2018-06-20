@@ -21,3 +21,4 @@ kylin_servers = ';'.join( "server " + i + ":" + server_port for i in server_clus
 hadoop_conf_dir = install_dir + "/latest/conf/hadoop_conf"
 nginx_conf=config['configurations']['nginx']['nginx_conf']
 nginx_port=config['configurations']['nginx']['nginx_port']
+nginx_user=config['configurations']['nginx']['nginx_user']

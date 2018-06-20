@@ -11,7 +11,15 @@ class NginxMaster(Script):
         if self.nginx_packages is not None and len(self.nginx_packages):
             for pack in self.nginx_packages:
                 Package(pack) 
-                
+        nginx_user = params.nginx_user
+        user_exists = True
+        import pwd
+        try:
+            pwd.getpwnam(nginx_user)
+        except KeyError:
+            user_exists = False
+        if not user_exists:
+            Execute("useradd -m -p " + nginx_user + " " + nginx_user)
 
     def configure(self, env):  
         import params
